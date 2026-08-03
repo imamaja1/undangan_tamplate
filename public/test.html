@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <script defer src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'></script>
+</head>
+<body>
+    <div x-data="{ __sheetOpen: false }" x-modelable="__sheetOpen">
+        <div x-on:click="__sheetOpen = true" class="cursor-pointer">
+            <button>Open Dialog</button>
+        </div>
+        <dialog x-effect="__sheetOpen ? $el.showModal() : $el.close()" x-on:cancel="__sheetOpen = false">
+            <h1>Dialog is Open</h1>
+            <button x-on:click="__sheetOpen = false">Close</button>
+        </dialog>
+    </div>
+</body>
+</html>
