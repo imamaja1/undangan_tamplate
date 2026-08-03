@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Gift;
+use App\Models\Invitation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,11 @@ class GiftFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'invitation_id' => Invitation::factory(),
+            'provider_name' => fake()->randomElement(['BCA', 'Mandiri', 'BRI', 'OVO', 'DANA']),
+            'account_number' => fake()->numerify('#######'),
+            'account_name' => fake()->name(),
+            'qr_code_path' => null,
         ];
     }
 }

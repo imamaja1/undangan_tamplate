@@ -39,25 +39,25 @@ function handleRoot(el, Alpine) {
                         this.__itemEls.indexOf(document.activeElement) + 1;
 
                     if (nextElement > this.__itemEls.length - 1) {
-                        return this.__firstEl.focus();
+                        return this.__firstEl?.focus();
                     }
 
-                    this.__itemEls[nextElement].focus();
+                    this.__itemEls[nextElement]?.focus();
                 },
                 __previous() {
                     let previousElement =
                         this.__itemEls.indexOf(document.activeElement) - 1;
 
                     if (previousElement < 0) {
-                        return this.__lastEl.focus();
+                        return this.__lastEl?.focus();
                     }
 
-                    this.__itemEls[previousElement].focus();
+                    this.__itemEls[previousElement]?.focus();
                 },
             };
         },
         // "@focus"() {
-        //     this.$data.__firstEl.focus();
+        //     this.$data.__firstEl?.focus();
         // },
         "@keydown.right.stop.prevent"() {
             this.$data.__next();
@@ -89,27 +89,27 @@ function handleMenu(el, Alpine) {
                         this.__itemEls.indexOf(document.activeElement) + 1;
 
                     if (nextElement > this.__itemEls.length - 1) {
-                        return this.__firstEl.focus();
+                        return this.__firstEl?.focus();
                     }
 
-                    this.__itemEls[nextElement].focus();
+                    this.__itemEls[nextElement]?.focus();
                 },
                 __previous() {
                     let previousElement =
                         this.__itemEls.indexOf(document.activeElement) - 1;
 
                     if (previousElement < 0) {
-                        return this.__lastEl.focus();
+                        return this.__lastEl?.focus();
                     }
 
-                    this.__itemEls[previousElement].focus();
+                    this.__itemEls[previousElement]?.focus();
                 },
                 __open(activationStrategy = "__firstEl") {
                     this.__isOpen = true;
 
                     this.$nextTick(() => {
                         activationStrategy &&
-                            this[activationStrategy].focus({
+                            this[activationStrategy]?.focus({
                                 preventScroll: true,
                             });
                     });
@@ -119,7 +119,7 @@ function handleMenu(el, Alpine) {
 
                     focusAfter &&
                         this.$nextTick(() =>
-                            this.$refs.__button.focus({ preventScroll: true }),
+                            this.$refs.__button?.focus({ preventScroll: true }),
                         );
                 },
             };
@@ -223,16 +223,16 @@ function handleItems(el, Alpine) {
             this.$data.__previous();
         },
         "@keydown.home.stop.prevent"() {
-            this.$data.__firstEl.focus();
+            this.$data.__firstEl?.focus();
         },
         "@keydown.end.stop.prevent"() {
-            this.$data.__lastEl.focus();
+            this.$data.__lastEl?.focus();
         },
         "@keydown.page-up.stop.prevent"() {
-            this.$data.__firstEl.focus();
+            this.$data.__firstEl?.focus();
         },
         "@keydown.page-down.stop.prevent"() {
-            this.$data.__lastEl.focus();
+            this.$data.__lastEl?.focus();
         },
         "@keydown.escape.stop.prevent"() {
             this.$data.__close();
@@ -447,34 +447,34 @@ function handleSubRoot(el, Alpine) {
                         this.__itemEls.indexOf(document.activeElement) + 1;
 
                     if (nextElement > this.__itemEls.length - 1) {
-                        return this.__firstEl.focus();
+                        return this.__firstEl?.focus();
                     }
 
-                    this.__itemEls[nextElement].focus();
+                    this.__itemEls[nextElement]?.focus();
                 },
                 __previous() {
                     let previousElement =
                         this.__itemEls.indexOf(document.activeElement) - 1;
 
                     if (previousElement < 0) {
-                        return this.__lastEl.focus();
+                        return this.__lastEl?.focus();
                     }
 
-                    this.__itemEls[previousElement].focus();
+                    this.__itemEls[previousElement]?.focus();
                 },
                 __open(activationStrategy = "__firstEl") {
                     this.__isOpen = true;
 
                     this.$nextTick(() => {
                         activationStrategy &&
-                            this[activationStrategy].focus({
+                            this[activationStrategy]?.focus({
                                 preventScroll: true,
                             });
                     });
                 },
                 __close(focusBefore = true) {
                     focusBefore &&
-                        this.__button.focus({
+                        this.__button?.focus({
                             preventScroll: true,
                         });
                     this.__isOpen = false;
@@ -570,16 +570,16 @@ function handleSubItems(el, Alpine) {
             this.$data.__close();
         },
         "@keydown.home.stop.prevent"() {
-            this.$data.__firstEl.focus();
+            this.$data.__firstEl?.focus();
         },
         "@keydown.end.stop.prevent"() {
-            this.$data.__lastEl.focus();
+            this.$data.__lastEl?.focus();
         },
         "@keydown.page-up.stop.prevent"() {
-            this.$data.__firstEl.focus();
+            this.$data.__firstEl?.focus();
         },
         "@keydown.page-down.stop.prevent"() {
-            this.$data.__lastEl.focus();
+            this.$data.__lastEl?.focus();
         },
         "@keydown.escape"() {
             this.$data.__close();

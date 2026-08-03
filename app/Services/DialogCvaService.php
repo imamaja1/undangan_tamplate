@@ -15,7 +15,7 @@ class DialogCvaService
             [
                 'variants' => [
                     'variant' => [
-                        'dialog' => 'transition-[translate,opacity,scale,overlay,display] w-full max-w-lg border bg-background p-6 shadow-lg sm:rounded-lg open:animate-in animate-out',
+                        'dialog' => 'm-auto transition-[translate,opacity,scale,overlay,display] w-full max-w-lg border bg-background p-6 shadow-lg sm:rounded-lg open:animate-in animate-out',
                         'sheet' => 'open:grid grid-rows-[auto_1fr_auto] m-0 gap-4 bg-background p-6 shadow-lg transition-[display,overlay,transform] ease-in-out duration-500',
                     ],
                     'side' => [

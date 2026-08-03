@@ -253,5 +253,63 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Toasts -->
+        <div
+            x-data="{
+                toasts: [],
+                push(message, type = 'success') {
+                    const id = Date.now() + Math.random();
+
+                    this.toasts.push({ id, message, type });
+
+                    setTimeout(() => this.remove(id), 4000);
+                },
+                remove(id) {
+                    this.toasts = this.toasts.filter((toast) => toast.id !== id);
+                },
+            }"
+            @toast.window="push($event.detail.message, $event.detail.type ?? 'success')"
+            class="pointer-events-none fixed bottom-4 right-4 z-50 flex w-full max-w-sm flex-col gap-2"
+        >
+            <template x-for="toast in toasts" :key="toast.id">
+                <div
+                    class="pointer-events-auto flex items-start gap-3 rounded-lg border bg-card p-4 text-sm shadow-lg"
+                    :class="toast.type === 'danger' ? 'border-destructive/40' : 'border-border'"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                >
+                    <x-lucide-check-circle class="size-5 shrink-0 text-primary" x-show="toast.type !== 'danger'" />
+                    <x-lucide-alert-circle class="size-5 shrink-0 text-destructive" x-show="toast.type === 'danger'" />
+                    <p class="flex-1 pt-0.5" x-text="toast.message"></p>
+                    <button type="button" class="text-muted-foreground transition-colors hover:text-foreground" @click="remove(toast.id)">
+                        <x-lucide-x class="size-4" />
+                    </button>
+                </div>
+            </template>
+        </div>
+        <!-- Page Loading Overlay -->
+        <div
+            x-data="{ loading: false, timeout: null }"
+            x-on:livewire:navigate.window="timeout = setTimeout(() => loading = true, 200)"
+            x-on:livewire:navigated.window="clearTimeout(timeout); loading = false"
+            x-show="loading"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-background/80 backdrop-blur-sm"
+        >
+            <div class="flex flex-col items-center gap-3">
+                <div class="size-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+                <p class="text-sm text-muted-foreground">Memuat...</p>
+            </div>
+        </div>
     </body>
 </html>

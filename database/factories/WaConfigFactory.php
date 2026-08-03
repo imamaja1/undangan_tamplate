@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Invitation;
 use App\Models\WaConfig;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +19,10 @@ class WaConfigFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'invitation_id' => Invitation::factory(),
+            'provider' => 'fonnte',
+            'api_key' => null,
+            'message_template' => fake()->sentence(),
         ];
     }
 }

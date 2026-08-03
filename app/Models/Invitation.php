@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Invitation extends Model
 {
@@ -13,7 +14,6 @@ class Invitation extends Model
 
     protected $fillable = [
         'user_id',
-        'slug',
         'title',
         'cover_image',
         'opening_message',
@@ -61,7 +61,7 @@ class Invitation extends Model
         return $this->hasMany(GuestList::class);
     }
 
-    public function waConfig(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function waConfig(): HasOne
     {
         return $this->hasOne(WaConfig::class);
     }

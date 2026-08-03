@@ -14,7 +14,6 @@ class Gallery extends Model
         'invitation_id',
         'type',
         'file_path',
-        'caption',
         'sort_order',
     ];
 

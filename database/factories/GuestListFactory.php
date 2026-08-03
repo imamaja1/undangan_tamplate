@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\GuestList;
+use App\Models\Invitation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,10 @@ class GuestListFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'invitation_id' => Invitation::factory(),
+            'name' => fake()->name(),
+            'phone_number' => fake()->numerify('628##########'),
+            'is_sent' => false,
         ];
     }
 }

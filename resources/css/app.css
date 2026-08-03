@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Pinyon+Script&display=swap');
 @import 'tailwindcss';
 
 @source '../views';
@@ -7,6 +8,7 @@
 
 @layer base {
     :root {
+        color-scheme: light;
         --background: 0 0% 100%;
         --foreground: 240 10% 3.9%;
         --card: 0 0% 100%;
@@ -30,6 +32,7 @@
     }
 
     .dark {
+        color-scheme: dark;
         --background: 240 10% 3.9%;
         --foreground: 0 0% 98%;
         --card: 240 10% 3.9%;
@@ -53,32 +56,39 @@
 }
 
 @theme {
-    --font-sans: 'Inter var', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-script: 'Pinyon Script', cursive;
+    --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+    --font-arabic: 'Amiri', ui-serif, Georgia, serif;
+
+    --color-navy: #0a1128;
+    --color-champagne: #c9b037;
+    --color-softwhite: #e8e6e1;
 
     --color-border: hsl(var(--border));
     --color-input: hsl(var(--input));
     --color-ring: hsl(var(--ring));
     --color-background: hsl(var(--background));
     --color-foreground: hsl(var(--foreground));
-    
+
     --color-primary: hsl(var(--primary));
     --color-primary-foreground: hsl(var(--primary-foreground));
-    
+
     --color-secondary: hsl(var(--secondary));
     --color-secondary-foreground: hsl(var(--secondary-foreground));
-    
+
     --color-destructive: hsl(var(--destructive));
     --color-destructive-foreground: hsl(var(--destructive-foreground));
-    
+
     --color-muted: hsl(var(--muted));
     --color-muted-foreground: hsl(var(--muted-foreground));
-    
+
     --color-accent: hsl(var(--accent));
     --color-accent-foreground: hsl(var(--accent-foreground));
-    
+
     --color-popover: hsl(var(--popover));
     --color-popover-foreground: hsl(var(--popover-foreground));
-    
+
     --color-card: hsl(var(--card));
     --color-card-foreground: hsl(var(--card-foreground));
 
@@ -90,12 +100,23 @@
     --animate-accordion-up: accordion-up 0.2s ease-out;
 
     @keyframes accordion-down {
-        from { height: 0; }
-        to { height: var(--radix-accordion-content-height); }
+        from {
+            height: 0;
+        }
+
+        to {
+            height: var(--radix-accordion-content-height);
+        }
     }
+
     @keyframes accordion-up {
-        from { height: var(--radix-accordion-content-height); }
-        to { height: 0; }
+        from {
+            height: var(--radix-accordion-content-height);
+        }
+
+        to {
+            height: 0;
+        }
     }
 }
 
@@ -103,19 +124,280 @@
     * {
         border-color: var(--color-border);
     }
+
     html {
         scroll-behavior: smooth;
     }
+
     body {
         background-color: var(--color-background);
         color: var(--color-foreground);
         font-synthesis-weight: none;
         text-rendering: optimizeLegibility;
     }
+
+    select option {
+        background-color: var(--color-card);
+        color: var(--color-foreground);
+    }
+
     [type="checkbox"]:indeterminate {
         background-color: var(--color-primary);
     }
+
     [x-cloak] {
         display: none !important;
+    }
+}
+
+@layer base {
+
+    /* Normalisasi input file, date, dan time agar identik dengan input lain */
+    input[type='file'],
+    input[type='date'],
+    input[type='time'],
+    input[type='datetime-local'],
+    input[type='month'],
+    input[type='week'] {
+        box-sizing: border-box;
+        height: 2.25rem;
+        /* sama dengan h-9 */
+        line-height: 1.25rem;
+        /* sama dengan text-sm */
+        font-family: var(--font-sans);
+        font-size: 0.875rem;
+        /* sama dengan text-sm */
+    }
+
+    /* Ikon kalender/jam diposisikan di ujung paling kanan */
+    input[type='date'],
+    input[type='time'],
+    input[type='datetime-local'],
+    input[type='month'],
+    input[type='week'] {
+        position: relative;
+    }
+
+    input[type='date']::-webkit-calendar-picker-indicator,
+    input[type='time']::-webkit-calendar-picker-indicator,
+    input[type='datetime-local']::-webkit-calendar-picker-indicator,
+    input[type='month']::-webkit-calendar-picker-indicator,
+    input[type='week']::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 50%;
+        right: 0.625rem;
+        margin: 0;
+        padding: 0.25rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transform: translateY(-50%);
+        transition: background-color 0.15s ease;
+    }
+
+    input[type='date']::-webkit-calendar-picker-indicator:hover,
+    input[type='time']::-webkit-calendar-picker-indicator:hover,
+    input[type='datetime-local']::-webkit-calendar-picker-indicator:hover,
+    input[type='month']::-webkit-calendar-picker-indicator:hover,
+    input[type='week']::-webkit-calendar-picker-indicator:hover {
+        background-color: hsl(var(--accent));
+    }
+}
+
+@layer utilities {
+
+    /* Ornamen damask perak (medali bunga + sulur) untuk bagian atas/bawah section */
+    .damask {
+        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='110' viewBox='0 0 400 110'%3E%3Cg fill='none' stroke='%236d84a0' stroke-width='1.1' opacity='0.35'%3E%3Cpath d='M200 55 C 150 35 130 70 100 55 C 70 40 50 70 20 55'/%3E%3Cpath d='M200 55 C 250 35 270 70 300 55 C 330 40 350 70 380 55'/%3E%3Cpath d='M110 55 q 0 -18 -10 -30 M90 55 q 0 -16 6 -28 M300 55 q 0 -18 10 -30 M320 55 q 0 -16 -6 -28'/%3E%3Cpath d='M100 50 q 8 -14 20 -18 q -2 16 -20 18 M100 60 q 8 14 20 18 q -2 -16 -20 -18'/%3E%3Cpath d='M310 50 q -8 -14 -20 -18 q 2 16 20 18 M310 60 q -8 14 -20 18 q 2 -16 -20 -18'/%3E%3Ccircle cx='200' cy='55' r='26'/%3E%3Ccircle cx='200' cy='55' r='17'/%3E%3Ccircle cx='200' cy='55' r='3'/%3E%3Ccircle cx='200' cy='8' r='2'/%3E%3Ccircle cx='200' cy='102' r='2'/%3E%3Ccircle cx='64' cy='55' r='2'/%3E%3Ccircle cx='336' cy='55' r='2'/%3E%3Cpath d='M30 55 q -6 -10 0 -20 q 6 10 0 20'/%3E%3Cpath d='M370 55 q 6 -10 0 -20 q -6 10 0 20'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: repeat-x;
+    }
+
+    /* Debu berkilau (sparkle dust) halus */
+    .sparkles {
+        background-image:
+            radial-gradient(1.2px 1.2px at 15% 20%, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+            radial-gradient(1px 1px at 32% 65%, rgba(212, 175, 55, 0.5) 50%, transparent 51%),
+            radial-gradient(1.4px 1.4px at 55% 30%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+            radial-gradient(1px 1px at 72% 70%, rgba(212, 175, 55, 0.45) 50%, transparent 51%),
+            radial-gradient(1.2px 1.2px at 88% 25%, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+            radial-gradient(1px 1px at 45% 80%, rgba(255, 255, 255, 0.7) 50%, transparent 51%);
+        background-repeat: repeat;
+        background-size: 240px 240px;
+    }
+
+    /* Monogram emas berkilau dengan pantulan cahaya bergerak */
+    .gold-shimmer {
+        background-image: linear-gradient(110deg,
+                #a67c00 0%,
+                #e7c55c 38%,
+                #fff7d6 50%,
+                #e7c55c 62%,
+                #a67c00 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gold-shimmer 3.5s linear infinite;
+    }
+
+    @keyframes gold-shimmer {
+        to {
+            background-position: 200% center;
+        }
+    }
+
+    /* Partikel debu emas yang melayang lembut */
+    .dust-particle {
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        background: radial-gradient(circle, #fff7d6 0%, rgba(243, 224, 138, 0.9) 55%, transparent 75%);
+        box-shadow: 0 0 8px rgba(243, 224, 138, 0.9);
+        animation: dust-float 6s ease-in-out infinite;
+    }
+
+    @keyframes dust-float {
+
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.25;
+        }
+
+        50% {
+            transform: translate(14px, -24px) scale(1.35);
+            opacity: 1;
+        }
+    }
+
+    /* Bokeh: gumpalan cahaya putih lembut */
+    .bokeh {
+        border-radius: 9999px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 70%);
+        filter: blur(8px);
+        animation: bokeh-float 9s ease-in-out infinite;
+    }
+
+    @keyframes bokeh-float {
+
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.35;
+        }
+
+        33% {
+            transform: translate(18px, -14px) scale(1.12);
+            opacity: 0.6;
+        }
+
+        66% {
+            transform: translate(-14px, 10px) scale(0.94);
+            opacity: 0.2;
+        }
+    }
+
+    /* Detak jantung emas */
+    .heart-beat {
+        transform-origin: center;
+        animation: heart-beat 1.4s ease-in-out infinite;
+    }
+
+    @keyframes heart-beat {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        25% {
+            transform: scale(1.18);
+        }
+
+        45% {
+            transform: scale(0.94);
+        }
+
+        60% {
+            transform: scale(1.08);
+        }
+    }
+
+    /* Cincin emas yang berdenyut (efek expand) */
+    .ring-pulse {
+        animation: ring-pulse 2.4s ease-out infinite;
+    }
+
+    @keyframes ring-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55);
+        }
+
+        100% {
+            box-shadow: 0 0 0 12px rgba(212, 175, 55, 0);
+        }
+    }
+
+    /* Tekstur kertas perkamen halus (serat & butiran) */
+    .parchment {
+        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%238a6f52' stroke-width='0.7' opacity='0.35'%3E%3Cpath d='M8 24 q 6 -2 12 0 M40 12 q 5 -1 10 0 M92 30 q 7 -2 14 0 M16 96 q 8 -2 16 0 M104 88 q 6 -1 12 0 M128 120 q 8 -2 16 0 M60 142 q 6 -2 12 0 M136 44 q 5 -1 10 0 M28 60 q 6 -1 12 0'/%3E%3C/g%3E%3Cg fill='%23a98762' opacity='0.28'%3E%3Ccircle cx='24' cy='44' r='1'/%3E%3Ccircle cx='70' cy='70' r='1.1'/%3E%3Ccircle cx='120' cy='18' r='0.9'/%3E%3Ccircle cx='96' cy='112' r='1'/%3E%3Ccircle cx='44' cy='128' r='0.9'/%3E%3Ccircle cx='8' cy='148' r='1'/%3E%3Ccircle cx='148' cy='80' r='1.1'/%3E%3Ccircle cx='132' cy='140' r='0.8'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: repeat;
+    }
+
+    /* Filigree emas halus (sulur bunga timbul) untuk sudut atas/bawah section */
+    .filigree {
+        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='90' viewBox='0 0 440 90'%3E%3Cg fill='none' stroke='%23c9a054' stroke-width='1' opacity='0.55'%3E%3Cpath d='M0 62 q 110 -8 220 -2 q 110 6 220 2'/%3E%3Cpath d='M28 60 q -4 -16 6 -28 q 8 -10 22 -14 q -2 14 -12 22 q -8 8 -16 20'/%3E%3Cpath d='M44 44 q 10 -10 24 -12 q -2 12 -16 18'/%3E%3Cpath d='M16 58 q -8 -10 -2 -22 q 4 -12 12 -18'/%3E%3Cpath d='M412 60 q 4 -16 -6 -28 q -8 -10 -22 -14 q 2 14 12 22 q 8 8 16 20'/%3E%3Cpath d='M396 44 q -10 -10 -24 -12 q 2 12 16 18'/%3E%3Cpath d='M424 58 q 8 -10 2 -22 q -4 -12 -12 -18'/%3E%3C/g%3E%3Cg fill='none' stroke='%23f5e6c0' stroke-width='0.8' opacity='0.35' transform='translate(0 -1)'%3E%3Cpath d='M0 62 q 110 -8 220 -2 q 110 6 220 2'/%3E%3Cpath d='M28 60 q -4 -16 6 -28 q 8 -10 22 -14 q -2 14 -12 22 q -8 8 -16 20'/%3E%3Cpath d='M44 44 q 10 -10 24 -12 q -2 12 -16 18'/%3E%3Cpath d='M16 58 q -8 -10 -2 -22 q 4 -12 12 -18'/%3E%3Cpath d='M412 60 q 4 -16 -6 -28 q -8 -10 -22 -14 q 2 14 12 22 q 8 8 16 20'/%3E%3Cpath d='M396 44 q -10 -10 -24 -12 q 2 12 16 18'/%3E%3Cpath d='M424 58 q 8 -10 2 -22 q -4 -12 -12 -18'/%3E%3C/g%3E%3Cg fill='%23d4af37' opacity='0.5'%3E%3Ccircle cx='24' cy='50' r='1.5'/%3E%3Ccircle cx='12' cy='60' r='1.3'/%3E%3Ccircle cx='54' cy='38' r='1.4'/%3E%3Ccircle cx='416' cy='50' r='1.5'/%3E%3Ccircle cx='428' cy='60' r='1.3'/%3E%3Ccircle cx='386' cy='38' r='1.4'/%3E%3Ccircle cx='214' cy='60' r='1.1'/%3E%3Ccircle cx='220' cy='57' r='1.4'/%3E%3Ccircle cx='226' cy='60' r='1.1'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: repeat-x;
+    }
+
+    /* Glassmorphism card untuk tema dark */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(201, 176, 55, 0.25);
+        border-radius: 1rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+        border-color: rgba(201, 176, 55, 0.5);
+        box-shadow: 0 12px 40px rgba(201, 176, 55, 0.15);
+    }
+
+    /* Starfield: bintang-bintang kecil berkelap-kelip untuk background animasi */
+    .starfield {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+    .star-dot {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 9999px;
+        animation: twinkle 3s ease-in-out infinite;
+    }
+    @keyframes twinkle {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.75; }
+    }
+
+    /* Debu emas melayang untuk background animasi */
+    .gold-dust-bg {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: radial-gradient(circle, #c9b037 0%, transparent 70%);
+        border-radius: 9999px;
+        animation: float-dust 8s ease-in-out infinite;
+        box-shadow: 0 0 6px rgba(201, 176, 55, 0.5);
+    }
+    @keyframes float-dust {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        15% { opacity: 0.6; }
+        85% { opacity: 0.6; }
+        100% { transform: translateY(-80px) scale(0.3); opacity: 0; }
     }
 }
