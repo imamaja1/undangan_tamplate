@@ -19,10 +19,99 @@
                     <a
                         href="{{ route('dashboard') }}"
                         wire:navigate
-                        class="flex items-center gap-3 rounded-lg px-3 py-2 text-primary transition-all hover:text-primary {{ request()->routeIs('dashboard') ? 'bg-muted' : 'text-muted-foreground hover:bg-muted/50' }}"
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('dashboard') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
                     >
                         <x-lucide-layout-dashboard class="size-4" />
                         {{ __('Dashboard') }}
+                    </a>
+
+                    <div class="px-2 py-2 mt-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        {{ __('Manajemen Undangan') }}
+                    </div>
+
+                    <a
+                        href="{{ route('admin.invitation') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.invitation*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-settings class="size-4" />
+                        {{ __('Pengaturan') }}
+                    </a>
+                    
+                    <a
+                        href="{{ route('admin.bride-groom') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.bride-groom*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-users class="size-4" />
+                        {{ __('Mempelai') }}
+                    </a>
+                    
+                    <a
+                        href="{{ route('admin.love-story') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.love-story*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-heart class="size-4" />
+                        {{ __('Cerita Cinta') }}
+                    </a>
+                    
+                    <a
+                        href="{{ route('admin.events') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.events*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-calendar class="size-4" />
+                        {{ __('Acara') }}
+                    </a>
+                    
+                    <a
+                        href="{{ route('admin.gallery') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.gallery*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-image class="size-4" />
+                        {{ __('Galeri') }}
+                    </a>
+                    
+                    <a
+                        href="{{ route('admin.gifts') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.gifts*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-gift class="size-4" />
+                        {{ __('Hadiah') }}
+                    </a>
+
+                    <div class="px-2 py-2 mt-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                        {{ __('Tamu & RSVP') }}
+                    </div>
+                    
+                    <a
+                        href="{{ route('admin.guest-lists') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.guest-lists*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-book-user class="size-4" />
+                        {{ __('Daftar Tamu') }}
+                    </a>
+                    
+                    <a
+                        href="{{ route('admin.rsvps') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.rsvps*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-message-square-heart class="size-4" />
+                        {{ __('RSVP & Ucapan') }}
+                    </a>
+
+                    <a
+                        href="{{ route('admin.wa-configs') }}"
+                        wire:navigate
+                        class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all {{ request()->routeIs('admin.wa-configs*') ? 'bg-muted text-primary' : 'text-muted-foreground hover:text-primary hover:bg-muted/50' }}"
+                    >
+                        <x-lucide-smartphone class="size-4" />
+                        {{ __('WA Config') }}
                     </a>
                 </nav>
             </div>
@@ -55,10 +144,99 @@
                             <a
                                 href="{{ route('dashboard') }}"
                                 wire:navigate
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-foreground hover:text-foreground {{ request()->routeIs('dashboard') ? 'bg-muted' : 'text-muted-foreground' }}"
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('dashboard') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
                             >
                                 <x-lucide-layout-dashboard class="size-5" />
                                 {{ __('Dashboard') }}
+                            </a>
+                            
+                            <div class="mx-[-0.65rem] px-3 py-2 mt-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                                {{ __('Manajemen Undangan') }}
+                            </div>
+
+                            <a
+                                href="{{ route('admin.invitation') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.invitation*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-settings class="size-5" />
+                                {{ __('Pengaturan') }}
+                            </a>
+                            
+                            <a
+                                href="{{ route('admin.bride-groom') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.bride-groom*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-users class="size-5" />
+                                {{ __('Mempelai') }}
+                            </a>
+                            
+                            <a
+                                href="{{ route('admin.love-story') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.love-story*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-heart class="size-5" />
+                                {{ __('Cerita Cinta') }}
+                            </a>
+                            
+                            <a
+                                href="{{ route('admin.events') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.events*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-calendar class="size-5" />
+                                {{ __('Acara') }}
+                            </a>
+                            
+                            <a
+                                href="{{ route('admin.gallery') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.gallery*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-image class="size-5" />
+                                {{ __('Galeri') }}
+                            </a>
+                            
+                            <a
+                                href="{{ route('admin.gifts') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.gifts*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-gift class="size-5" />
+                                {{ __('Hadiah') }}
+                            </a>
+                            
+                            <div class="mx-[-0.65rem] px-3 py-2 mt-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                                {{ __('Tamu & RSVP') }}
+                            </div>
+
+                            <a
+                                href="{{ route('admin.guest-lists') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.guest-lists*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-book-user class="size-5" />
+                                {{ __('Daftar Tamu') }}
+                            </a>
+                            
+                            <a
+                                href="{{ route('admin.rsvps') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.rsvps*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-message-square-heart class="size-5" />
+                                {{ __('RSVP & Ucapan') }}
+                            </a>
+
+                            <a
+                                href="{{ route('admin.wa-configs') }}"
+                                wire:navigate
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 {{ request()->routeIs('admin.wa-configs*') ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground' }}"
+                            >
+                                <x-lucide-smartphone class="size-5" />
+                                {{ __('WA Config') }}
                             </a>
                         </nav>
                     </x-ui.sheet.content>

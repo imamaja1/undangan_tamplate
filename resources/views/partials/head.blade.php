@@ -6,11 +6,15 @@
 </title>
 
 <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
+    function updateTheme() {
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
     }
+    updateTheme();
+    document.addEventListener('livewire:navigated', updateTheme);
 </script>
 
 <link rel="icon" href="/favicon.ico" sizes="any">
