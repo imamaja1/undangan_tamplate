@@ -1,15 +1,15 @@
 <section
     id="events"
-    class="relative flex min-h-dvh flex-col items-center justify-center gap-10 overflow-hidden px-6 py-24"
+    x-data="{ reveal: false }"
+    x-intersect="reveal = true"
+    :class="reveal ? 'reveal-visible' : ''"
+    class="reveal-section relative flex min-h-dvh flex-col items-center justify-center gap-10 overflow-hidden px-6 py-24"
     style="background: linear-gradient(175deg, #0a1128 0%, #0d1b2e 50%, #0a1128 100%);"
 >
     {{-- Ambient glows --}}
     <div class="pointer-events-none absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl" style="background: radial-gradient(circle, rgba(201,176,55,0.12) 0%, transparent 70%);"></div>
     <div class="pointer-events-none absolute bottom-0 right-0 h-72 w-72 translate-x-1/3 translate-y-1/3 rounded-full blur-3xl" style="background: radial-gradient(circle, rgba(201,176,55,0.06) 0%, transparent 70%);"></div>
 
-    {{-- Filigree top/bottom --}}
-    <div class="filigree pointer-events-none absolute inset-x-0 top-0 h-20 opacity-60"></div>
-    <div class="filigree pointer-events-none absolute inset-x-0 bottom-0 h-20 rotate-180 opacity-60"></div>
 
     {{-- Section heading --}}
     <div class="reveal relative z-10 flex flex-col items-center gap-3 text-center">
@@ -48,10 +48,7 @@
                 $isAkad = str_contains(strtolower($event->type ?? $event->title), 'akad') || str_contains(strtolower($event->title), 'akad');
             @endphp
 
-            <div class="reveal reveal-delay-{{ $index % 3 + 1 }} glass-card overflow-hidden rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
-
-                {{-- Top gold accent bar --}}
-                <div class="h-[3px] w-full" style="background: linear-gradient(90deg, transparent, #c9b037, #c9b037, #c9b037, transparent);"></div>
+            <x-section-card class="reveal reveal-delay-{{ $index % 3 + 1 }}">
 
                 <div class="flex flex-col items-center gap-5 px-6 py-8 text-center">
 
@@ -144,7 +141,7 @@
                         @endif
                     </div>
                 </div>
-            </div>
+            </x-section-card>
         @endforeach
     </div>
 </section>

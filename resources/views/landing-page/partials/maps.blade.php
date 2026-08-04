@@ -1,14 +1,15 @@
 <section
     id="maps"
-    class="relative overflow-hidden"
+    x-data="{ reveal: false }"
+    x-intersect="reveal = true"
+    :class="reveal ? 'reveal-visible' : ''"
+    class="reveal-section relative overflow-hidden"
     style="background: linear-gradient(175deg, #1d274d 0%, #263360 60%, #1a2240 100%);"
 >
     {{-- Sparkle overlay --}}
     <div class="sparkles pointer-events-none absolute inset-0 opacity-10"></div>
     <div class="pointer-events-none absolute top-0 right-0 h-80 w-80 translate-x-1/3 -translate-y-1/3 rounded-full blur-3xl" style="background: radial-gradient(circle, rgba(201,176,55,0.12) 0%, transparent 70%);"></div>
 
-    {{-- Filigree top --}}
-    <div class="filigree pointer-events-none absolute inset-x-0 top-0 h-20 opacity-40" style="filter: invert(1) brightness(0.6);"></div>
 
     @foreach ($events as $event)
         @if ($event->location_name || $event->google_maps_url)
@@ -20,7 +21,7 @@
             <div class="reveal relative z-10 flex flex-col">
                 {{-- Info panel --}}
                 <div class="px-8 py-10">
-                    <p class="mb-3 text-[10px] font-semibold uppercase tracking-[0.45em] text-[#d4af37]/70">Venue Location</p>
+                    <p class="mb-3 text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne/70">Venue Location</p>
 
                     <h3 class="mb-3 leading-tight text-[#e8e6e1]"
                         style="font-family:'Playfair Display',serif; font-size:1.8rem; font-style:italic; line-height:1.25;">
@@ -28,7 +29,7 @@
                     </h3>
 
                     @if ($event->location_address)
-                        <p class="mb-6 text-[13px] font-light leading-relaxed text-[#a0b0c0]/75">
+                        <p class="mb-6 text-[13px] font-light leading-relaxed text-[#b8c4d0]/75">
                             {{ $event->location_address }}
                         </p>
                     @endif
@@ -72,7 +73,7 @@
 
                 {{-- Divider between events --}}
                 @if (!$loop->last)
-                    <div class="mx-8 my-2 h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent"></div>
+                    <div class="mx-8 my-2 h-px bg-gradient-to-r from-transparent via-[#c9b037]/30 to-transparent"></div>
                 @endif
             </div>
         @endif

@@ -28,15 +28,15 @@
 
 <section
     id="bride-groom"
-    class="relative flex min-h-dvh flex-col items-center justify-center gap-16 overflow-hidden bg-gradient-to-b from-[#0a1128] via-[#0d1b2e] to-[#0a1128] px-8 py-24 text-center"
+    x-data="{ reveal: false }"
+    x-intersect="reveal = true"
+    :class="reveal ? 'reveal-visible' : ''"
+    class="reveal-section relative flex min-h-dvh flex-col items-center justify-center gap-16 overflow-hidden bg-gradient-to-b from-[#0a1128] via-[#0d1b2e] to-[#0a1128] px-8 py-24 text-center"
 >
     {{-- Cahaya ambient halus --}}
     <div class="pointer-events-none absolute top-0 left-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-champagne/5 blur-3xl"></div>
     <div class="pointer-events-none absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 rounded-full bg-champagne/3 blur-3xl"></div>
 
-    {{-- Filigree emas halus di sudut atas & bawah --}}
-    <div class="filigree pointer-events-none absolute inset-x-0 top-0 h-24 opacity-70"></div>
-    <div class="filigree pointer-events-none absolute inset-x-0 bottom-0 h-24 rotate-180 opacity-70"></div>
 
     <div class="relative z-10 mx-auto flex max-w-sm flex-col items-center gap-4">
         <p class="text-[10px] font-semibold uppercase tracking-[0.42em] text-champagne/50">Meet The Couple</p>

@@ -1,6 +1,9 @@
 <footer
     id="footer"
-    class="relative flex flex-col items-center justify-center overflow-hidden py-24 px-6 text-center"
+    x-data="{ reveal: false }"
+    x-intersect="reveal = true"
+    :class="reveal ? 'reveal-visible' : ''"
+    class="reveal-section relative flex flex-col items-center justify-center overflow-hidden py-24 px-6 text-center"
     style="background: linear-gradient(175deg, #161e3b 0%, #1a2240 50%, #141b35 100%);"
 >
     {{-- Sparkles --}}
@@ -8,7 +11,7 @@
     <div class="pointer-events-none absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl" style="background: radial-gradient(circle, rgba(201,176,55,0.1) 0%, transparent 70%);"></div>
 
     {{-- Top Divider --}}
-    <div class="mb-12 h-px w-24 bg-gradient-to-r from-transparent via-[#d4af37]/40 to-transparent"></div>
+    <div class="mb-12 h-px w-24 bg-gradient-to-r from-transparent via-[#c9b037]/40 to-transparent"></div>
 
     {{-- Thank You Text --}}
     <div class="reveal relative z-10 flex flex-col items-center gap-6">
@@ -16,7 +19,7 @@
             Terima Kasih
         </h2>
 
-        <p class="max-w-xs text-[14px] font-light leading-relaxed text-[#a0b0c0]/80" style="font-family:'Inter', sans-serif;">
+        <p class="max-w-xs text-[14px] font-light leading-relaxed text-[#b8c4d0]/80" style="font-family:'Inter', sans-serif;">
             Suatu kehormatan bagi kami atas kehadiran dan doa restu Bapak/Ibu/Saudara/i.
         </p>
 
@@ -32,13 +35,13 @@
 
         {{-- Initials --}}
         <div class="mt-8 text-[#c9b037]" style="font-family:'Playfair Display',serif; font-size:3rem; line-height:1; letter-spacing:0.1em;">
-            {{ $brideInitial }} <span class="font-light italic text-[#d4af37] text-[2.5rem]">&amp;</span> {{ $groomInitial }}
+            {{ $brideInitial }} <span class="font-light italic text-[#c9b037] text-[2.5rem]">&amp;</span> {{ $groomInitial }}
         </div>
     </div>
 
     {{-- Copyright / Made With --}}
     <div class="relative z-10 mt-20 flex w-full flex-col items-center gap-4">
-        <div class="h-px w-full max-w-[200px] bg-gradient-to-r from-transparent via-[#d4af37]/20 to-transparent"></div>
+        <div class="h-px w-full max-w-[200px] bg-gradient-to-r from-transparent via-[#c9b037]/20 to-transparent"></div>
         <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-[#8a9bbd]/60">
             Made with <span class="text-[#b76e79] mx-1 text-[11px]">♥</span> by {{ strtoupper($brideFirstName) }} &amp; {{ strtoupper($groomFirstName) }}
         </p>

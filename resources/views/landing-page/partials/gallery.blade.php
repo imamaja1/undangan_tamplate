@@ -1,21 +1,22 @@
 <section
     id="gallery"
-    class="relative overflow-hidden py-20 px-5"
+    x-data="{ reveal: false }"
+    x-intersect="reveal = true"
+    :class="reveal ? 'reveal-visible' : ''"
+    class="reveal-section relative overflow-hidden py-20 px-5"
     style="background: linear-gradient(175deg, #0a1128 0%, #0d1b2e 50%, #0a1128 100%);"
 >
-    {{-- Parchment texture --}}
-    <div class="parchment pointer-events-none absolute inset-0 opacity-40"></div>
     {{-- Ambient glow --}}
     <div class="pointer-events-none absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/3 rounded-full blur-3xl" style="background: radial-gradient(circle, rgba(201,176,55,0.15) 0%, transparent 70%);"></div>
 
     {{-- Section heading --}}
     <div class="reveal relative z-10 mb-8 flex flex-col items-center gap-3 text-center">
-        <p class="text-[10px] font-semibold uppercase tracking-[0.45em] text-[#c9b037]/60">Our Gallery</p>
+        <p class="text-[10px] font-semibold uppercase tracking-[0.45em] text-champagne/60">Our Gallery</p>
         <h2 class="text-[#c9b037]" style="font-family:'Great Vibes',cursive; font-size:3rem; line-height:1.2;">Moments</h2>
         <div class="flex items-center gap-3">
-            <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#d4af37]/60"></div>
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="#d4af37" opacity="0.7"><path d="M5 0.5 L6 3.5 L9.5 4 L7 6.5 L7.5 10 L5 8.5 L2.5 10 L3 6.5 L0.5 4 L4 3.5 Z"/></svg>
-            <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#d4af37]/60"></div>
+            <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#c9b037]/60"></div>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="#c9b037" opacity="0.7"><path d="M5 0.5 L6 3.5 L9.5 4 L7 6.5 L7.5 10 L5 8.5 L2.5 10 L3 6.5 L0.5 4 L4 3.5 Z"/></svg>
+            <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#c9b037]/60"></div>
         </div>
     </div>
 

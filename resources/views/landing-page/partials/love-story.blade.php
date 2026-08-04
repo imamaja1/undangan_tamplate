@@ -1,6 +1,9 @@
 <section
     id="love-story"
-    class="relative flex min-h-dvh flex-col items-center gap-12 overflow-hidden bg-navy px-8 py-24"
+    x-data="{ reveal: false }"
+    x-intersect="reveal = true"
+    :class="reveal ? 'reveal-visible' : ''"
+    class="reveal-section relative flex min-h-dvh flex-col items-center gap-12 overflow-hidden bg-navy px-8 py-24"
 >
     {{-- Decorative Glow --}}
     <div class="pointer-events-none absolute top-0 left-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-champagne/10 blur-3xl"></div>
