@@ -18,6 +18,7 @@ class Invitation extends Model
         'cover_image',
         'opening_message',
         'music_url',
+        'theme',
         'status',
     ];
 

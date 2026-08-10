@@ -1,48 +1,48 @@
-@extends('landing-page.layouts.app')
+@extends('landing-page.template-1.layouts.app')
 
 @section('title', 'Undangan Pernikahan')
 
 @section('content')
-    @include('landing-page.partials.cover')
+    @include('landing-page.template-1.partials.cover')
 
     <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
 
-    @include('landing-page.partials.opening')
+    @include('landing-page.template-1.partials.opening')
 
     <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
 
-    @include('landing-page.partials.bride-groom')
+    @include('landing-page.template-1.partials.bride-groom')
 
     @if ($loveStories && $loveStories->count() > 0)
         <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
-        @include('landing-page.partials.love-story')
+        @include('landing-page.template-1.partials.love-story')
     @endif
 
     @if ($events && $events->count() > 0)
         <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
-        @include('landing-page.partials.event')
-        @include('landing-page.partials.maps')
+        @include('landing-page.template-1.partials.event')
+        @include('landing-page.template-1.partials.maps')
     @endif
 
     @if ($galleries && $galleries->count() > 0)
         <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
-        @include('landing-page.partials.gallery')
+        @include('landing-page.template-1.partials.gallery')
     @endif
 
     @if ($gifts && $gifts->count() > 0)
         <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
-        @include('landing-page.partials.gift')
+        @include('landing-page.template-1.partials.gift')
     @endif
 
     @if ($invitation)
         <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
-        @include('landing-page.partials.rsvp')
-        @include('landing-page.partials.wishes')
+        @include('landing-page.template-1.partials.rsvp')
+        @include('landing-page.template-1.partials.wishes')
     @endif
 
     <div class="relative z-10 h-px w-4/5 mx-auto bg-gradient-to-r from-transparent via-champagne/20 to-transparent -mt-px"></div>
 
-    @include('landing-page.partials.footer')
+    @include('landing-page.template-1.partials.footer')
 
-    @include('landing-page.partials.music')
+    @include('landing-page.template-1.partials.music')
 @endsection

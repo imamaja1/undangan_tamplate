@@ -14,20 +14,22 @@ Route::get('/', function () {
         ->first();
 
     $loveStories = $invitation?->loveStories()->orderBy('sort_order')->get();
-    $events      = $invitation?->events()->orderByDesc('is_main_event')->orderBy('event_date')->orderBy('start_time')->get();
-    $galleries   = $invitation?->galleries()->orderBy('sort_order')->get();
-    $gifts       = $invitation?->gifts()->get();
+    $events = $invitation?->events()->orderByDesc('is_main_event')->orderBy('event_date')->orderBy('start_time')->get();
+    $galleries = $invitation?->galleries()->orderBy('sort_order')->get();
+    $gifts = $invitation?->gifts()->get();
 
-    return view('landing-page.index', [
-        'invitation'  => $invitation,
-        'bride'       => $bride,
-        'groom'       => $groom,
-        'mainEvent'   => $mainEvent,
+    $theme = request()->query('template') ?? $invitation->theme ?? 'template-1';
+
+    return view('landing-page.'.$theme.'.index', [
+        'invitation' => $invitation,
+        'bride' => $bride,
+        'groom' => $groom,
+        'mainEvent' => $mainEvent,
         'loveStories' => $loveStories,
-        'events'      => $events,
-        'galleries'   => $galleries,
-        'gifts'       => $gifts,
-        'to'          => request()->query('to'),
+        'events' => $events,
+        'galleries' => $galleries,
+        'gifts' => $gifts,
+        'to' => request()->query('to'),
     ]);
 })->name('home');
 

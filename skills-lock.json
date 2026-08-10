@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "tailwind-expert": {
+      "source": "roedyrustam/vibes-plug",
+      "sourceType": "github",
+      "skillPath": "skills/tailwind-expert/SKILL.md",
+      "computedHash": "6299e911e2fd54b49605f73205448ebb553eff8a25a45f94a90c26b8c0e06952"
+    },
+    "ui-ux-pro-max": {
+      "source": "roedyrustam/vibes-plug",
+      "sourceType": "github",
+      "skillPath": "skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "91ca3b1503fcc5be280d0a3c90fa7f59abbe148e14ccc4fecec33123b8cc9d06"
+    }
+  }
+}

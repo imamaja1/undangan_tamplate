@@ -327,4 +327,84 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    
+}
+
+/* ========================================================== */
+/* TEMPLATE 4 - UNIQUE CARD ANIMATIONS */
+/* ========================================================== */
+
+.anim-stardust {
+    background-color: rgba(74, 28, 36, 0.4);
+    background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 1px, transparent 1.5px);
+    background-size: 32px 32px;
+    animation: panStardust 25s linear infinite;
+}
+@keyframes panStardust {
+    0% { background-position: 0 0; }
+    100% { background-position: 64px 64px; }
+}
+
+.anim-radial-pulse {
+    background-color: rgba(74, 28, 36, 0.4);
+    background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
+    background-size: 150% 150%;
+    animation: pulseRadial 8s ease-in-out infinite alternate;
+}
+@keyframes pulseRadial {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+.anim-batik-wave {
+    background-color: rgba(74, 28, 36, 0.4);
+    background-image: repeating-radial-gradient(
+        circle at 0 0,
+        transparent 0,
+        rgba(212, 175, 55, 0.08) 15px,
+        transparent 30px
+    );
+    animation: waveBatik 20s linear infinite;
+}
+@keyframes waveBatik {
+    0% { background-position: 0px 0px; }
+    100% { background-position: 60px 30px; }
+}
+
+.anim-elegant-lines {
+    background-color: rgba(74, 28, 36, 0.4);
+    background-image: linear-gradient(
+        45deg,
+        rgba(212, 175, 55, 0.05) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(212, 175, 55, 0.05) 50%,
+        rgba(212, 175, 55, 0.05) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 40px 40px;
+    animation: panLines 15s linear infinite;
+}
+@keyframes panLines {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+.anim-diamond-grid {
+    background-color: rgba(74, 28, 36, 0.4);
+    background-image: 
+        linear-gradient(135deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%);
+    background-position:  15px 0, 15px 0, 0 0, 0 0;
+    background-size: 30px 30px;
+    background-repeat: repeat;
+    animation: shimmerDiamond 8s linear infinite;
+}
+@keyframes shimmerDiamond {
+    0% { background-position: 15px 0, 15px 0, 0 0, 0 0; }
+    100% { background-position: 15px 30px, 15px 30px, 0 30px, 0 30px; }
 }

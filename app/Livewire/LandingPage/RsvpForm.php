@@ -14,6 +14,7 @@ class RsvpForm extends Component
     public string $status = 'attending';
     public int $pax = 1;
     public string $message = '';
+    public string $theme = 'template-1';
     
     public bool $isSubmitted = false;
 

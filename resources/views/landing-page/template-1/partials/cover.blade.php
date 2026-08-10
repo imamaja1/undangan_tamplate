@@ -44,12 +44,24 @@
         </h1>
     </div>
 
-    @include('landing-page.partials.countdown')
+    @include('landing-page.template-1.partials.countdown')
+
+    @php
+        $guestName = request()->query('to');
+    @endphp
+
+    @if($guestName)
+        <div class="flex flex-col items-center gap-1.5 mt-2">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-champagne/80">Kepada Yth. Bapak/Ibu/Saudara/i,</p>
+            <p class="text-2xl font-bold text-champagne drop-shadow-md" style="font-family: 'Playfair Display', serif;">{{ urldecode($guestName) }}</p>
+            <p class="text-[9px] font-light italic text-champagne/60 mt-1">*Mohon maaf bila ada kesalahan penulisan nama/gelar</p>
+        </div>
+    @endif
 
     <button
         type="button"
         @click="__coverOpen = true; window.dispatchEvent(new CustomEvent('cover-dismissed'))"
-        class="rounded-full bg-champagne px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.3em] text-[#060a18] shadow-[0_0_28px_rgba(201,176,55,0.4)] transition-all duration-300 hover:shadow-[0_0_42px_rgba(201,176,55,0.65)]"
+        class="rounded-full bg-champagne px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.3em] text-[#060a18] shadow-[0_0_28px_rgba(201,176,55,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_42px_rgba(201,176,55,0.65)]"
     >
         Open Invitation
     </button>

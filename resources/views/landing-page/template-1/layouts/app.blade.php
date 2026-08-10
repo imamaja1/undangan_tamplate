@@ -12,7 +12,25 @@
         
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-[#060a18] antialiased">
+    <body class="bg-[#060a18] antialiased" x-data="{ loaded: false }" x-init="window.addEventListener('load', () => setTimeout(() => loaded = true, 500))">
+        {{-- Preloader --}}
+        <div 
+            x-show="!loaded"
+            x-transition:leave="transition ease-in-out duration-700"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-[100] mx-auto flex max-w-md flex-col items-center justify-center bg-[#060a18]"
+        >
+            <div class="relative flex items-center justify-center">
+                <div class="absolute h-20 w-20 animate-[spin_3s_linear_infinite] rounded-full border-t-2 border-b-2 border-[#c9b037]/60"></div>
+                <div class="absolute h-14 w-14 animate-[spin_2s_linear_infinite_reverse] rounded-full border-r-2 border-l-2 border-[#c9b037]/40"></div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9b037" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-pulse">
+                    <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1.1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.9 7.9 7.9-7.9 1-1a5.5 5.5 0 000-7.8z"/>
+                </svg>
+            </div>
+            <p class="mt-6 text-[9px] font-semibold uppercase tracking-[0.4em] text-[#c9b037]/60 animate-pulse">Memuat Undangan</p>
+        </div>
+
         <main class="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-[#0a1128] shadow-2xl relative">
             {{-- Background Animation Layer --}}
             <div class="fixed inset-0 z-0 mx-auto max-w-md pointer-events-none overflow-hidden">

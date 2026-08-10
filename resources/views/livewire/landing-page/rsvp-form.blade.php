@@ -1,3 +1,83 @@
+@if ($theme === 'template-2')
+    <div>
+        <div class="text-center mb-6">
+            <h2 class="font-display-lg-mobile text-[40px] font-semibold text-[#a38222] mb-2 tracking-tight">Konfirmasi Kehadiran</h2>
+            <p class="font-body-md text-[16px] text-[#32302a]">Kami menantikan kehadiran Anda.</p>
+        </div>
+
+        @if ($isSubmitted)
+            <div class="flex flex-col items-center justify-center gap-4 py-8 text-center relative z-10" x-data x-init="typeof confetti !== 'undefined' && confetti({particleCount: 100, spread: 70, origin: {y: 0.6}, colors: ['#a38222', '#ffffff', '#e4e2d3']})">
+                <div class="flex h-16 w-16 items-center justify-center rounded-full border border-[#a38222] text-[#a38222] bg-[#e4e2d3]/30">
+                    <span class="material-symbols-outlined text-3xl">check</span>
+                </div>
+                <div>
+                    <h4 class="font-display-lg-mobile text-2xl font-bold text-[#a38222] uppercase mt-4">Terima Kasih</h4>
+                    <p class="mt-2 font-body-md text-[16px] text-[#32302a]">Konfirmasi kehadiran Anda telah berhasil dikirim.</p>
+                </div>
+            </div>
+        @else
+            <form method="POST" action="javascript:void(0);" wire:submit.prevent="submit" class="space-y-4">
+                @csrf
+                <!-- Name Field -->
+                <div>
+                    <label class="block font-label-caps text-[12px] font-semibold tracking-[0.15em] text-[#a38222] mb-1">Nama Lengkap</label>
+                    <input wire:model="name" class="w-full bg-[#f2ede5]/50 border-0 border-b border-[#a38222] text-[#32302a] placeholder:text-[#7a7768] focus:ring-0 focus:border-[#a38222] transition-colors py-2 px-1 font-body-lg text-[18px]" placeholder="Masukkan nama Anda" type="text" required />
+                    @error('name') <span class="mt-1 text-[11px] text-red-500">{{ $message }}</span> @enderror
+                </div>
+                
+                <!-- Guest Count Field -->
+                <div>
+                    <label class="block font-label-caps text-[12px] font-semibold tracking-[0.15em] text-[#a38222] mb-1">Jumlah Tamu</label>
+                    <select wire:model="pax" class="w-full bg-[#f2ede5]/50 border-0 border-b border-[#a38222] text-[#32302a] focus:ring-0 focus:border-[#a38222] transition-colors py-2 px-1 font-body-lg text-[18px] appearance-none">
+                        @for ($i = 1; $i <= 10; $i++)
+                            <option value="{{ $i }}" class="text-[#1e1b16]">{{ $i }} Orang</option>
+                        @endfor
+                    </select>
+                </div>
+
+                <!-- Attendance Status -->
+                <div>
+                    <label class="block font-label-caps text-[12px] font-semibold tracking-[0.15em] text-[#a38222] mb-2">Status Kehadiran</label>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center cursor-pointer group relative">
+                            <input wire:model="status" class="peer absolute opacity-0" name="attendance" type="radio" value="attending" required />
+                            <div class="w-4 h-4 rounded-full border border-[#a38222] mr-2 flex items-center justify-center radio-circle peer-checked:bg-[#a38222]">
+                                <div class="w-2 h-2 rounded-full bg-[#fef9f0] opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                            </div>
+                            <span class="font-body-md text-[16px] text-[#32302a]/80 group-hover:text-[#32302a] transition-colors">Hadir</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer group relative">
+                            <input wire:model="status" class="peer absolute opacity-0" name="attendance" type="radio" value="declined" />
+                            <div class="w-4 h-4 rounded-full border border-[#a38222] mr-2 flex items-center justify-center radio-circle peer-checked:bg-[#a38222]">
+                                <div class="w-2 h-2 rounded-full bg-[#fef9f0] opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                            </div>
+                            <span class="font-body-md text-[16px] text-[#32302a]/80 group-hover:text-[#32302a] transition-colors">Tidak Hadir</span>
+                        </label>
+                    </div>
+                    @error('status') <span class="mt-1 text-[11px] text-red-500">{{ $message }}</span> @enderror
+                </div>
+
+                <!-- Separator for Ucapan -->
+                <div class="pt-8 mt-8 border-t border-[#a38222]/30">
+                    <h2 class="font-display-lg-mobile text-[40px] font-semibold text-[#a38222] mb-6 text-center tracking-tight">Ucapan & Doa</h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block font-label-caps text-[12px] font-semibold tracking-[0.15em] text-[#a38222] mb-1">Pesan</label>
+                            <textarea wire:model="message" class="w-full bg-[#f2ede5]/50 border-0 border-b border-[#a38222] text-[#32302a] placeholder:text-[#7a7768] focus:ring-0 focus:border-[#a38222] transition-colors py-2 px-1 font-body-lg text-[18px] resize-none" placeholder="Tuliskan ucapan Anda di sini..." rows="3"></textarea>
+                            @error('message') <span class="mt-1 text-[11px] text-red-500">{{ $message }}</span> @enderror
+                        </div>
+
+                        <button wire:loading.attr="disabled" class="w-full bg-transparent border border-[#a38222] text-[#a38222] font-label-caps text-[12px] font-semibold tracking-[1.5px] py-3 px-6 rounded hover:bg-[#a38222]/10 transition-colors uppercase mt-4 flex justify-center items-center gap-2" type="submit">
+                            <span wire:loading.remove>Kirim Ucapan</span>
+                            <span wire:loading>Mengirim...</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        @endif
+    </div>
+@else
 <div class="relative w-full max-w-sm rounded-3xl bg-white/[0.03] px-8 py-10 backdrop-blur-sm border border-champagne/15 shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
 
     <div class="mb-10 text-center">
@@ -96,3 +176,4 @@
         </form>
     @endif
 </div>
+@endif

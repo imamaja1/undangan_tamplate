@@ -1,3 +1,31 @@
+@if ($theme === 'template-2')
+<div class="mt-6 flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar max-h-[400px]">
+    @forelse ($wishes as $wish)
+        <div class="bg-[#e4e2d3]/20 p-4 rounded border-l-2 border-[#a38222]">
+            <div class="flex justify-between items-start mb-1">
+                <h4 class="font-headline-md text-[32px] font-medium text-[#a38222]">{{ $wish->name }}</h4>
+                <span class="font-label-caps text-[10px] text-[#7a7768]">{{ $wish->created_at->diffForHumans() }}</span>
+            </div>
+            <p class="font-body-md text-[18px] text-[#32302a] leading-relaxed">{{ $wish->message }}</p>
+        </div>
+    @empty
+        <div class="py-10 text-center font-body-md text-[16px] text-[#7a7768] italic">
+            Belum ada ucapan. Jadilah yang pertama!
+        </div>
+    @endforelse
+
+    @if ($totalWishes > $limit)
+        <div class="flex justify-center mt-6">
+            <button
+                wire:click="loadMore"
+                class="bg-transparent border border-[#a38222] text-[#a38222] font-label-caps text-[12px] font-semibold py-2 px-6 rounded hover:bg-[#a38222]/10 transition-colors uppercase tracking-[1.5px]"
+            >
+                Muat Lebih Banyak
+            </button>
+        </div>
+    @endif
+</div>
+@else
 <div class="flex w-full flex-col gap-4">
     @forelse ($wishes as $wish)
         <div class="reveal relative flex flex-col gap-4 rounded-2xl p-5 transition-all bg-navy border border-champagne/20 hover:border-champagne/40 shadow-[0_6px_24px_rgba(0,0,0,0.25)]">
@@ -50,3 +78,4 @@
         </div>
     @endif
 </div>
+@endif

@@ -46,6 +46,7 @@ const registerPlugins = (Alpine) => {
         days: '00',
         hours: '00',
         mins: '00',
+        secs: '00',
         _timer: null,
         init() {
             const end = new Date(target).getTime();
@@ -56,6 +57,7 @@ const registerPlugins = (Alpine) => {
                 this.days = String(Math.floor(diff / 86400000)).padStart(2, '0');
                 this.hours = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
                 this.mins = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+                this.secs = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
             };
 
             tick();

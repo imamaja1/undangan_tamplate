@@ -10,6 +10,7 @@ class WishesList extends Component
 {
     public Invitation $invitation;
     public int $limit = 5;
+    public string $theme = 'template-1';
 
     public function loadMore(): void
     {

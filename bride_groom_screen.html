@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pasangan Berbahagia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&amp;family=EB+Garamond:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "background": "#fef9f0",
+                "on-background": "#1d1b16",
+                "surface": "#fef9f0",
+                "surface-dim": "#ded9d1",
+                "surface-bright": "#fef9f0",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-low": "#f8f3eb",
+                "surface-container": "#f3ede4",
+                "surface-container-high": "#ede8df",
+                "surface-container-highest": "#e7e2d9",
+                "on-surface": "#1d1b16",
+                "on-surface-variant": "#4b4639",
+                "outline": "#7c7767",
+                "outline-variant": "#cdc6b4",
+                "primary": "#705d2e",
+                "on-primary": "#ffffff",
+                "primary-container": "#fcdfa6",
+                "on-primary-container": "#261a00",
+                "secondary": "#675e40",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#f0e2bb",
+                "on-secondary-container": "#211b04",
+                "tertiary": "#45664d",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#c7ecce",
+                "on-tertiary-container": "#00210f",
+                "error": "#ba1a1a",
+                "on-error": "#ffffff",
+                "error-container": "#ffdad6",
+                "on-error-container": "#410002"
+        },
+        "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "1rem",
+                "xl": "1rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-md": "48px",
+                "unit": "8px",
+                "gutter": "32px",
+                "margin-mobile": "24px",
+                "stack-lg": "80px",
+                "container-max": "1140px"
+        },
+        "fontFamily": {
+                "display-lg": [
+                        "EB Garamond"
+                ],
+                "label-caps": [
+                        "Montserrat"
+                ],
+                "headline-md": [
+                        "EB Garamond"
+                ],
+                "body-lg": [
+                        "EB Garamond"
+                ],
+                "body-md": [
+                        "EB Garamond"
+                ],
+                "display-lg-mobile": [
+                        "EB Garamond"
+                ],
+                "title-sm": [
+                        "EB Garamond"
+                ]
+        },
+        "fontSize": {
+                "display-lg": [
+                        "64px",
+                        {
+                                "lineHeight": "72px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.15em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "title-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .gold-gradient-text {
+            background: linear-gradient(45deg, #d8bf8a, #a68d59);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border: 1px solid;
+            border-image: linear-gradient(45deg, #d8bf8a, #a68d59) 1;
+        }
+        .gold-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d8bf8a, transparent);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col relative">
+<!-- TopAppBar -->
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-32 px-margin-mobile flex flex-col items-center max-w-md mx-auto">
+<div class="text-center mb-12 animate-fade-in">
+<h2 class="font-display-lg-mobile gold-gradient-text mb-4" style="font-family: &quot;EB Garamond&quot;, serif; font-style: italic; white-space: nowrap;">Pasangan Berbahagia</h2>
+<div class="gold-divider w-32 mx-auto"></div>
+</div>
+<!-- Bride Card -->
+<div class="w-full bg-surface-container rounded-[1rem] p-6 mb-8 relative overflow-hidden flex flex-col items-center text-center animate-fade-in hover-scale" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 20px;">
+<span class="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase">Mempelai Wanita</span>
+<div class="w-48 h-48 mb-6 rounded-full overflow-hidden animate-float" style="border-radius: 50%;">
+<img alt="Elise" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAe6Vcfvnw-E5H6U1-0vZATqhw9zpfBsZbW_gdzoHmHWtb_MkGCMf5vk0mIL7447GbDJtOdcZ5q5kD7MsUsNaCmZeNRqlLmf7zk9Ied2InalvC2NZWd53XlyHOZKPUWr2ordDOB2LJQeDwj7nlb8ZwWAG9mCBTsuX94iK0D-Zm1eSt3qEqYCW5vBRdblQxDwSdllWS4IeHRklhuUFNfsu2PomaaXAf_kL0FdM5SY1EU5xUFGzx8TigpGmi1_2iNwuopw">
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Elvi Bathurragikin</h3>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Putri tercinta dari Bapak Ihsan Wadi <br>&amp; Ibu&nbsp; Husniwati</p>
+</div><div class="flex items-center justify-center mb-8 animate-fade-in">
+<div class="gold-divider w-12"></div>
+<span class="font-display-lg-mobile text-display-lg-mobile gold-gradient-text px-4 italic">&amp;</span>
+<div class="gold-divider w-12"></div>
+</div>
+<!-- Groom Card -->
+<div class="w-full bg-surface-container rounded-[1rem] p-6 relative overflow-hidden flex flex-col items-center text-center animate-fade-in hover-scale" style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); animation-delay: 0.3s;">
+<span class="font-label-caps text-label-caps text-primary mb-4 tracking-widest uppercase">Mempelai Pria</span>
+<div class="w-48 h-48 mb-6 rounded-full overflow-hidden animate-float" style="border-radius: 50%;">
+<img alt="Julian" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw9uBTcYgwMJcR8cZcfWVJlP7DpjWfy6_2w7kJxx6QfdcwyuTqfVmbUB5Y42CUqwcrUfUdcO_BSluM1tZ4aIVoqcQcBGuKX-1BwirLQbfGfltIVLMV7WIVvaw0orpdnsyohzZCnmQ76iSF20-zT4F0_A5-bg1KrXFJ6XF7sMm73N-JqVNjjlQ95jeD_qLqo477cc-8JDQojjkfpY6zc6hyrAggaVZ0fX0iO_8c1YBIrDO-Bb1cqFgTD3oAAav8WhRH3g">
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Susilawati</h3>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Putra tercinta dari Bapak M. Nur <br>&amp; Ibu Salmiyah (almh)</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+
+
+</body></html>

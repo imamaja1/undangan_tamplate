@@ -17,6 +17,8 @@ new #[Title('Pengaturan Undangan')] class extends Component {
 
     public string $openingMessage = '';
 
+    public string $theme = 'template-1';
+
     public $musicFile;
 
     public string $status = 'draft';
@@ -31,6 +33,7 @@ new #[Title('Pengaturan Undangan')] class extends Component {
 
         $this->title = $invitation->title;
         $this->openingMessage = $invitation->opening_message ?? '';
+        $this->theme = $invitation->theme ?? 'template-1';
         $this->status = $invitation->status;
     }
 
@@ -58,6 +61,7 @@ new #[Title('Pengaturan Undangan')] class extends Component {
             'title' => ['required', 'string', 'max:255'],
             'coverImage' => ['nullable', 'image', 'max:2048'],
             'openingMessage' => ['nullable', 'string', 'max:5000'],
+            'theme' => ['required', Rule::in(['template-1', 'template-2', 'template-3', 'template-4'])],
             'musicFile' => ['nullable', 'mimes:mp3,wav,ogg,m4a', 'max:10240'],
             'status' => ['required', Rule::in(['draft', 'published'])],
         ]);
@@ -65,6 +69,7 @@ new #[Title('Pengaturan Undangan')] class extends Component {
         $data = [
             'title' => $validated['title'],
             'opening_message' => $validated['openingMessage'] ?: null,
+            'theme' => $validated['theme'],
             'status' => $validated['status'],
         ];
 
@@ -117,6 +122,19 @@ new #[Title('Pengaturan Undangan')] class extends Component {
                     <x-ui.label for="openingMessage">Pesan Pembuka</x-ui.label>
                     <x-ui.textarea wire:model="openingMessage" id="openingMessage" rows="5" placeholder="Dengan memohon rahmat dan ridho Allah SWT..." />
                     @error('openingMessage')
+                        <p class="text-[0.8rem] font-medium text-destructive">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="grid gap-2">
+                    <x-ui.label for="theme">Pilihan Template</x-ui.label>
+                    <x-ui.select wire:model="theme" id="theme">
+                        <option value="template-1">Template 1 (Midnight Gold)</option>
+                        <option value="template-2">Template 2 (Ultra Luxury Warm)</option>
+                        <option value="template-3">Template 3 (Deep Navy Editorial)</option>
+                        <option value="template-4">Template 4 (Maroon & Gold)</option>
+                    </x-ui.select>
+                    @error('theme')
                         <p class="text-[0.8rem] font-medium text-destructive">{{ $message }}</p>
                     @enderror
                 </div>

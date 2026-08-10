@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="id" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal Union - RSVP &amp; Guest Book</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "background": "#fef9f0",
+                "on-background": "#1e1b16",
+                "surface": "#fef9f0",
+                "on-surface": "#1e1b16",
+                "surface-variant": "#e4e2d3",
+                "on-surface-variant": "#49473a",
+                "primary": "#b59635",
+                "on-primary": "#ffffff",
+                "primary-container": "#ffe16d",
+                "on-primary-container": "#221b00",
+                "secondary": "#a38222",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#efe2bc",
+                "on-secondary-container": "#211b04",
+                "tertiary": "#43664e",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#c5ecce",
+                "on-tertiary-container": "#00210f",
+                "error": "#ba1a1a",
+                "on-error": "#ffffff",
+                "error-container": "#ffdad6",
+                "on-error-container": "#410002",
+                "outline": "#7a7768",
+                "outline-variant": "#cbc7b4",
+                "inverse-surface": "#32302a",
+                "inverse-on-surface": "#f5f0e7",
+                "inverse-primary": "#e4c54a",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-low": "#f8f3eb",
+                "surface-container": "#f2ede5",
+                "surface-container-high": "#ece8e0",
+                "surface-container-highest": "#e7e2da",
+                "surface-dim": "#ded9d1",
+                "surface-bright": "#fef9f0",
+                "surface-tint": "#b59635"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "stack-md": "48px",
+                "unit": "8px",
+                "gutter": "32px",
+                "margin-mobile": "24px",
+                "stack-lg": "80px",
+                "container-max": "1140px"
+        },
+        "fontFamily": {
+                "display-lg": [
+                        "EB Garamond"
+                ],
+                "label-caps": [
+                        "Montserrat"
+                ],
+                "headline-md": [
+                        "EB Garamond"
+                ],
+                "body-lg": [
+                        "EB Garamond"
+                ],
+                "body-md": [
+                        "EB Garamond"
+                ],
+                "display-lg-mobile": [
+                        "EB Garamond"
+                ],
+                "title-sm": [
+                        "EB Garamond"
+                ]
+        },
+        "fontSize": {
+                "display-lg": [
+                        "64px",
+                        {
+                                "lineHeight": "72px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-caps": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.15em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "title-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .gold-gradient {
+            background: linear-gradient(45deg, #b59635, #e4c54a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-image: linear-gradient(45deg, #b59635, #e4c54a) 1;
+        }
+        
+        /* Custom RSVP Radio */
+        input[type="radio"]:checked + label .radio-circle {
+            background-color: #a38222;
+            border-color: #a38222;
+        }
+        .radio-circle {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-inverse-surface min-h-screen pb-[80px] md:pb-0 font-body-lg">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex justify-between items-center px-margin-mobile py-4 w-full top-0 sticky z-40 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-secondary" style='font-variation-settings: "FILL" 0;'>menu</span>
+</button>
+<h1 class="font-display-lg text-headline-md text-secondary tracking-wide">Ethereal Union</h1>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-secondary" style='font-variation-settings: "FILL" 0;'>favorite</span>
+</button>
+</header>
+<!-- TopAppBar (Mobile) -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-mobile py-gutter">
+<!-- Divider -->
+<div class="flex items-center justify-center mb-8">
+<div class="h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent w-1/3"></div>
+<span class="material-symbols-outlined text-secondary mx-2 text-sm" style='font-variation-settings: "FILL" 1;'>diamond</span>
+<div class="h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent w-1/3"></div>
+</div>
+<div class="grid grid-cols-1 gap-gutter items-start max-w-2xl mx-auto">
+<!-- Section 1: RSVP Form -->
+<section class="bg-surface-variant/20 backdrop-blur-md p-6 md:p-8 rounded-DEFAULT border border-secondary/30">
+<div class="text-center mb-6">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-secondary mb-2">Konfirmasi Kehadiran</h2>
+<p class="font-body-md text-body-md text-inverse-surface">Kami menantikan kehadiran Anda.</p>
+</div>
+<form class="space-y-4">
+<div>
+<label class="block font-label-caps text-label-caps text-secondary mb-1">Nama Lengkap</label>
+<input class="w-full bg-surface-container/50 border-0 border-b border-secondary text-inverse-surface placeholder:text-outline focus:ring-0 focus:border-secondary transition-colors py-2 px-1 font-body-lg" placeholder="Masukkan nama Anda" type="text"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-secondary mb-1">Jumlah Tamu</label>
+<select class="w-full bg-surface-container/50 border-0 border-b border-secondary text-inverse-surface focus:ring-0 focus:border-secondary transition-colors py-2 px-1 font-body-lg appearance-none">
+<option class="text-surface" value="1">1 Orang</option>
+<option class="text-surface" value="2">2 Orang</option>
+</select>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-secondary mb-2">Status Kehadiran</label>
+<div class="flex space-x-4">
+<label class="flex items-center cursor-pointer group">
+<input checked="" class="hidden peer" name="attendance" type="radio" value="hadir"/>
+<div class="w-4 h-4 rounded-full border border-secondary mr-2 flex items-center justify-center radio-circle peer-checked:bg-secondary">
+<div class="w-2 h-2 rounded-full bg-background opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+<span class="font-body-md text-body-md text-inverse-surface/80 group-hover:text-inverse-surface transition-colors">Hadir</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="hidden peer" name="attendance" type="radio" value="tidak_hadir"/>
+<div class="w-4 h-4 rounded-full border border-secondary mr-2 flex items-center justify-center radio-circle peer-checked:bg-secondary">
+<div class="w-2 h-2 rounded-full bg-background opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+<span class="font-body-md text-body-md text-inverse-surface/80 group-hover:text-inverse-surface transition-colors">Tidak Hadir</span>
+</label>
+</div>
+</div>
+</form><div class="mt-8 pt-8 border-t border-secondary/30">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-secondary mb-6 text-center">Ucapan &amp; Doa</h2>
+<form class="space-y-4">
+<div>
+<label class="block font-label-caps text-label-caps text-secondary mb-1">Pesan</label>
+<textarea class="w-full bg-surface-container/50 border-0 border-b border-secondary text-inverse-surface placeholder:text-outline focus:ring-0 focus:border-secondary transition-colors py-2 px-1 font-body-lg resize-none" placeholder="Tuliskan ucapan Anda di sini..." rows="3"></textarea>
+</div>
+<button class="w-full bg-transparent border border-secondary text-secondary font-label-caps text-label-caps py-3 px-6 rounded-DEFAULT hover:bg-secondary/10 transition-colors tracking-[1.5px]" type="submit">
+                        KIRIM UCAPAN
+                    </button>
+</form>
+</div><div class="mt-6 flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar max-h-[300px]">
+<!-- Comment 1 -->
+<div class="bg-surface-variant/20 p-4 rounded-DEFAULT border-l-2 border-secondary">
+<h4 class="font-headline-md text-headline-md text-secondary mb-1">Sarah &amp; Keluarga</h4>
+<p class="font-body-md text-body-md text-inverse-surface">Selamat menempuh hidup baru Elise &amp; Julian! Semoga bahagia selalu dan dilancarkan semuanya.</p>
+</div>
+<!-- Comment 2 -->
+<div class="bg-surface-variant/20 p-4 rounded-DEFAULT border-l-2 border-secondary">
+<h4 class="font-headline-md text-headline-md text-secondary mb-1">Budi Santoso</h4>
+<p class="font-body-md text-body-md text-inverse-surface">Happy Wedding! Can't wait to celebrate with you guys.</p>
+</div>
+<!-- Comment 3 -->
+<div class="bg-surface-variant/20 p-4 rounded-DEFAULT border-l-2 border-secondary">
+<h4 class="font-headline-md text-headline-md text-secondary mb-1">Anita Wijaya</h4>
+<p class="font-body-md text-body-md text-inverse-surface">Doa terbaik untuk kalian berdua. Maaf belum bisa hadir, tapi doa kami menyertai.</p>
+</div>
+</div>
+</section>
+<!-- Section 2: Guest Book -->
+</div>
+<!-- Bottom Decorative Divider -->
+<div class="flex items-center justify-center mt-gutter">
+<div class="h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent w-1/3"></div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+</body></html>
