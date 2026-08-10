@@ -29,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
     {
         \Livewire\Livewire::forceAssetInjection();
         $this->configureDefaults();
+        if (config('app.env') === 'production') {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
     }
 
     /**
