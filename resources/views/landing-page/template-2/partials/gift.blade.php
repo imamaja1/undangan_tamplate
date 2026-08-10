@@ -62,10 +62,10 @@
                             @click="navigator.clipboard.writeText('{{ $gift->account_number }}'); copied = true; setTimeout(() => copied = false, 3000)"
                             class="px-6 py-3 rounded-full border border-primary text-primary hover:bg-[#755b23] hover:text-white transition-all duration-300 font-label-caps text-[12px] font-semibold uppercase flex items-center gap-2 group/btn"
                         >
-                            <span class="material-symbols-outlined text-[16px] group-hover/btn:scale-110 transition-transform" x-show="!copied">content_copy</span>
-                            <span class="material-symbols-outlined text-[16px]" x-show="copied" style="display: none;">check</span>
-                            <span x-show="!copied">Salin No. Rekening</span>
-                            <span x-show="copied" style="display: none;">Tersalin!</span>
+                            <span class="material-symbols-outlined text-[16px] group-hover/btn:scale-110 group-hover/btn:text-white transition-transform" x-show="!copied">content_copy</span>
+                            <span class="material-symbols-outlined text-[16px] group-hover/btn:text-white" x-show="copied" style="display: none;">check</span>
+                            <span class="group-hover/btn:text-white" x-show="!copied">Salin No. Rekening</span>
+                            <span class="group-hover/btn:text-white" x-show="copied" style="display: none;">Tersalin!</span>
                         </button>
                     </div>
                 </div>
