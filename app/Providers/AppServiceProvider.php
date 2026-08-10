@@ -2,12 +2,17 @@
 
 namespace App\Providers;
 
+use App\Services\AlertCvaService;
+use App\Services\BadgeCvaService;
+use App\Services\ButtonCvaService;
+use App\Services\DialogCvaService;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\View\ComponentAttributeBag;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,10 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(\App\Services\AlertCvaService::class, fn () => \App\Services\AlertCvaService::new());
-        $this->app->singleton(\App\Services\BadgeCvaService::class, fn () => \App\Services\BadgeCvaService::new());
-        $this->app->singleton(\App\Services\ButtonCvaService::class, fn () => \App\Services\ButtonCvaService::new());
-        $this->app->singleton(\App\Services\DialogCvaService::class, fn () => \App\Services\DialogCvaService::new());
+        $this->app->singleton(AlertCvaService::class, fn () => AlertCvaService::new());
+        $this->app->singleton(BadgeCvaService::class, fn () => BadgeCvaService::new());
+        $this->app->singleton(ButtonCvaService::class, fn () => ButtonCvaService::new());
+        $this->app->singleton(DialogCvaService::class, fn () => DialogCvaService::new());
     }
 
     /**
@@ -27,10 +32,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        \Livewire\Livewire::forceAssetInjection();
+        Livewire::forceAssetInjection();
         $this->configureDefaults();
-        if (config('app.env') === 'production') {
-            \Illuminate\Support\Facades\URL::forceScheme('https');
+        if (app()->isProduction()) {
+            URL::forceScheme('https');
         }
     }
 
