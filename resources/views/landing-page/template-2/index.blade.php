@@ -2,6 +2,10 @@
 
 @section('title', 'Undangan Pernikahan - Exclusive')
 
+@section('meta')
+    @include('landing-page.partials.og-meta')
+@endsection
+
 @section('content')
     @include('landing-page.template-2.partials.cover')
 

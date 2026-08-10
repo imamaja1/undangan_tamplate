@@ -2,6 +2,10 @@
 
 @section('title', 'Undangan Pernikahan - Deep Navy Editorial Edition')
 
+@section('meta')
+    @include('landing-page.partials.og-meta')
+@endsection
+
 @section('content')
     @include('landing-page.template-3.partials.cover')
 
