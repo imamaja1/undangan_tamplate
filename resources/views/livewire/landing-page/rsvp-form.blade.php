@@ -1,3 +1,4 @@
+<div>
 @if ($theme === 'template-2')
     <div>
         <div class="text-center mb-6">
@@ -16,8 +17,7 @@
                 </div>
             </div>
         @else
-            <form method="POST" action="javascript:void(0);" wire:submit.prevent="submit" class="space-y-4">
-                @csrf
+            <form wire:submit="submit" class="space-y-4">
                 <!-- Name Field -->
                 <div>
                     <label class="block font-label-caps text-[12px] font-semibold tracking-[0.15em] text-[#a38222] mb-1">Nama Lengkap</label>
@@ -177,3 +177,4 @@
     @endif
 </div>
 @endif
+</div>

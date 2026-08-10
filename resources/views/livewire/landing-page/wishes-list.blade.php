@@ -1,3 +1,4 @@
+<div>
 @if ($theme === 'template-2')
 <div class="mt-6 flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar max-h-[400px]">
     @forelse ($wishes as $wish)
@@ -79,3 +80,4 @@
     @endif
 </div>
 @endif
+</div>
