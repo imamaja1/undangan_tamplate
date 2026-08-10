@@ -30,20 +30,20 @@
         <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
         
         <div class="relative z-10 flex flex-col justify-between w-full px-4 h-full py-4 overflow-y-auto">
-            <div class="flex flex-col items-center w-full max-w-sm mx-auto rounded-xl backdrop-blur-md border border-white/20 shadow-xl p-4 gap-2 bg-black/40 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                <div class="flex flex-col items-center gap-2 w-full text-center">
-                    <span aria-hidden="true" class="material-symbols-outlined text-warm-brass mb-1">location_city</span>
-                    <span class="font-label-caps text-white uppercase tracking-[0.15em] text-center">The Wedding of</span>
-                    <h1 class="font-display-lg-mobile text-warm-brass mb-1 mt-1 text-center leading-none">
+            <div class="flex flex-col items-center w-full max-w-sm mx-auto rounded-xl backdrop-blur-md border border-white/20 shadow-xl p-2 px-3 bg-black/40 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <div class="flex flex-col items-center w-full text-center">
+                    <span aria-hidden="true" class="material-symbols-outlined text-warm-brass text-sm leading-none m-0">location_city</span>
+                    <span class="font-label-caps text-white uppercase tracking-[0.15em] text-center text-[9px] leading-none m-0">The Wedding of</span>
+                    <h1 class="font-display-lg-mobile text-[20px] text-warm-brass text-center leading-tight m-0">
                         {{ $bride?->nickname ?? 'Elise' }} &amp; {{ $groom?->nickname ?? 'Julian' }}
                     </h1>
                 </div>
-                <div class="w-16 h-px bg-warm-brass/50"></div>
                 
                 @if ($guestName)
-                    <div class="mt-2 flex flex-col items-center gap-1 w-full text-center">
-                        <p class="font-label-caps text-white/80 uppercase tracking-widest text-[10px]">Dear,</p>
-                        <p class="font-display-lg-mobile text-[24px] text-warm-brass">{{ urldecode($guestName) }}</p>
+                    <div class="w-8 h-px bg-warm-brass/40 my-0.5"></div>
+                    <div class="flex flex-col items-center w-full text-center">
+                        <p class="font-label-caps text-white/80 uppercase tracking-widest text-[8px] leading-none m-0">Dear,</p>
+                        <p class="font-display-lg-mobile text-[14px] text-warm-brass leading-tight max-w-[260px] mx-auto m-0">{{ urldecode($guestName) }}</p>
                     </div>
                 @endif
             </div>
