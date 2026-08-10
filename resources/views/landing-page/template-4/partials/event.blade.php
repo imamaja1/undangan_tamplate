@@ -29,7 +29,7 @@
                 $dayName  = \Carbon\Carbon::parse($event->event_date)->locale('id')->isoFormat('dddd');
                 $dateStr  = \Carbon\Carbon::parse($event->event_date)->locale('id')->isoFormat('D MMMM YYYY');
                 $timeStr  = $event->start_time
-                    ? substr($event->start_time, 0, 5) . ($event->end_time ? ' – ' . ($event->end_time === '23:59' || $event->end_time === '00:00' ? 'Selesai' : substr($event->end_time, 0, 5)) : '')
+                    ? substr($event->start_time, 0, 5) . ($event->end_time && !in_array($event->end_time, ['23:59', '00:00']) ? ' – ' . substr($event->end_time, 0, 5) : ' – Selesai')
                     : null;
 
                 // Build Google Calendar link

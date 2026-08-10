@@ -44,7 +44,7 @@
                     $timeStr = $event->start_time
                         ? substr($event->start_time, 0, 5) . ($event->end_time && !in_array($event->end_time, ['23:59', '00:00'])
                             ? ' - ' . substr($event->end_time, 0, 5)
-                            : ' WIB')
+                            : ' - Selesai')
                         : null;
                 @endphp
                 

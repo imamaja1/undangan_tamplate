@@ -262,7 +262,7 @@ new #[Title('Acara')] class extends Component {
                                     </x-ui.badge>
                                 </td>
                                 <td class="px-4 py-3 font-medium">{{ $event->title }}</td>
-                                <td class="px-4 py-3">{{ $event->event_date?->format('d M Y') }} {{ $event->start_time }}{{ $event->end_time ? ' - '.$event->end_time : '' }}</td>
+                                <td class="px-4 py-3">{{ $event->event_date?->format('d M Y') }} {{ $event->start_time }}{{ $event->end_time ? ' - '.$event->end_time : ' - Selesai' }}</td>
                                 <td class="px-4 py-3 text-muted-foreground">{{ $event->location_name }}</td>
                                 <td class="px-4 py-3 text-right">
                                     <div class="inline-flex items-center gap-2">
